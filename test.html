@@ -25,8 +25,11 @@ min-height: 50em;
 <body>
 
 <h1>X Frame Options Test</h1>
-
-<iframe src=""> </iframe>
+<form onsubmit="iframe(); return false">
+	<label> Input the URL </label>
+	<input id="testpath" type="text"> </input>
+	<input type="submit" value="Test it"></submit>
+</form>
 
 <div id="mydiv">
   <div id="mydivheader">Malicious Overlay</div>
@@ -36,7 +39,14 @@ min-height: 50em;
   <button>Submit data</button>
 </div>
 
+<iframe id="ifr" src=""> </iframe>
+
 <script>
+	function iframe(){
+		url = document.getElementById("testpath").value;
+		document.getElementById("ifr").setAttribute("src", url);
+	}
+
 //Make the DIV element draggagle:
 dragElement(document.getElementById("mydiv"));
 
